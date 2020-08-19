@@ -203,8 +203,9 @@ defmodule Bamboo.SMTPAdapter do
     << random :: size(32) >> = :crypto.strong_rand_bytes(4)
     body
     |> add_smtp_line("Content-Type: #{attachment.content_type}; name=\"#{attachment.filename}\"")
-    |> add_smtp_line("Content-Disposition: attachment; filename=\"#{attachment.filename}\"")
+    |> add_smtp_line("Content-Disposition: inline; filename=\"#{attachment.filename}\"")
     |> add_smtp_line("Content-Transfer-Encoding: base64")
+    |> add_smtp_line("Content-ID: <#{attachment.content_id}>")
     |> add_smtp_line("X-Attachment-Id: #{random}")
   end
 
