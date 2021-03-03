@@ -1,5 +1,50 @@
 # CHANGELOG
 
+## 3.1.3 - 2021-02-11
+
+- Update `gen_smtp` dependency from 1.0.1 to 1.1.0 ([#171])
+    - This project now requires Erlang/OTP+20
+
+## 3.1.2 - 2021-01-29
+- Enable Bamboo_smtp to work in ipv6-only environment. Fix issue([#143]).
+
+[#143]: https://github.com/fewlinesco/bamboo_smtp/issues/143
+## 3.1.1 - 2021-01-04
+- Bring back Base64 encoding on headers. Fix issue [#162]
+
+[#162]: https://github.com/fewlinesco/bamboo_smtp/pull/162
+## 3.1.0 - 2020-11-23
+
+- Fix for using custom config with `response: true` by bumping `bamboo` version to `~> 1.6` ([#150])
+- Implement our custom test adapter ([#151])
+- Fix CI random failure by attaching FakeGenSMTP Server process to Test supervision tree.([#153])
+- Add Content-ID header when needed([#154])
+- Base 64 encode the headers only when the content contains non-ASCII characters.([#155])
+- Handle `:permanent_failure` exception and re-raising it as a `SMTPError`.([#156])
+- After bumping the dependencies, the project requires([#149]):
+    - credo `~> 1.4.1`
+    - bamboo `~> 1.6`
+    - excoveralls `~> 0.13.3`
+    - gen_smtp  `~> 1.0.1`
+
+[#149]: https://github.com/fewlinesco/bamboo_smtp/pull/149
+[#150]: https://github.com/fewlinesco/bamboo_smtp/pull/150
+[#151]: https://github.com/fewlinesco/bamboo_smtp/pull/151
+[#153]: https://github.com/fewlinesco/bamboo_smtp/pull/153
+[#154]: https://github.com/fewlinesco/bamboo_smtp/pull/154
+[#155]: https://github.com/fewlinesco/bamboo_smtp/pull/155
+[#156]: https://github.com/fewlinesco/bamboo_smtp/pull/156
+
+## 3.0.0 - 2020-09-10
+
+- Fix eml attachment ([#137]).
+- Change text/html part to be submitted with base64 encoding to comply to the MIME Format of Internet Message Bodies specification ([#141]).
+- After bumping the dependencies, the project requires elixir 1.7 or higher to run ([#139]).
+
+[#137]: https://github.com/fewlinesco/bamboo_smtp/pull/137
+[#141]: https://github.com/fewlinesco/bamboo_smtp/pull/141
+[#139]: https://github.com/fewlinesco/bamboo_smtp/pull/139
+
 ## 2.1.0 - 2019-10-14
 
 - SMTPAdapter now does not append `Bcc` and `Cc` headers to the body if there is not any provided ([#130]).
